@@ -6,17 +6,25 @@ public class EnemyController : MonoBehaviour
 {
     public int health = 100;
 
+    void Awake()
+    {
+        this.gameObject.tag = "Enemy";
+    }
+
     void FixedUpdate()
     {
         if (this.health <= 0)
-            Die();
+        {
+            //Die();
+            Debug.Log("Enemy is Dead");
+        }
     }
 
     // Update is called once per frame
     public int LowerHealth(int damage)
     {
         this.health -= damage;
-        Debug.Log($"OUCH! I'm hit! {this.health}");
+        Debug.Log($"I'm hit! {this.health}");
         return this.health;
     }
 

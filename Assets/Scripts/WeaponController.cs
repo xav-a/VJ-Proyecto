@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    public Transform weapon;
-
-  /*   public LayerMask whatToHit;
-    public float range = 100f;
-    public float hitForce = 400f; */
-
+    public GameObject bulletType;
     public int damageRatio = 25;
+    public float fireRange = 100f;
 
+/*   public LayerMask targettableObjectLayer;
+*/
 
     // Update is called once per frame
     void Update()
@@ -24,20 +22,10 @@ public class WeaponController : MonoBehaviour
 
     void FireWeapon()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(weapon.position, weapon.up);
-        //Debug to check ray is created and firing
-        Debug.DrawRay(weapon.position, weapon.up);
-
-        EnemyController enemy;
-        if (hitInfo)
-        {
-            if ((enemy = hitInfo.transform.GetComponent<EnemyController>()) != null)
-            {
-                //Make Enemy Take Damage and other stuff
-                enemy.LowerHealth(damageRatio);
-            }
-        }
+        GameObject bullet = Instantiate(
+            this.bulletType,
+            this.transform.position,
+            Quaternion.identity
+        );
     }
-
-
 }
