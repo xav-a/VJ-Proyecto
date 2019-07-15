@@ -18,7 +18,7 @@ public class Obstaculos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
    private void OnCollisionEnter2D(Collision2D col)
@@ -33,8 +33,6 @@ public class Obstaculos : MonoBehaviour
             GameObject.Destroy(HplayerGO);
             GameObject.Destroy(obsGO);
         }
-
-
     }
 
 }

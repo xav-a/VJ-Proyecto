@@ -8,6 +8,7 @@ public class BulletBehavior : MonoBehaviour
     public float speed = 50f;
     void Start()
     {
+        this.speed *= 10f;
         this.GetComponent<Rigidbody2D>()
             .velocity = this.transform.up * this.speed;
     }

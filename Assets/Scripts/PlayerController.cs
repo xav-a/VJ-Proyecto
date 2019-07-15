@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float velocidad;
+    public float velocidad = 10f;
     Rigidbody2D rb2D;
     Vector2 movimiento;
 
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
-
+        movimiento = new Vector2(0f, 0f);
     }
 
      void Update()
     {
-        movimiento = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        movimiento.x = Input.GetAxis("Horizontal");
+        movimiento.y = Input.GetAxis("Vertical");
     }
+
     void FixedUpdate()
     {
         transform.Translate(movimiento * velocidad);
@@ -31,7 +33,6 @@ public class PlayerController : MonoBehaviour
         PosicionLimitada.y = Mathf.Clamp(PosicionLimitada.y, -0.13f, 0.13f);
 
         transform.position = PosicionLimitada;
-
     }
 
 
