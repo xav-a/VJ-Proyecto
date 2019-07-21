@@ -8,22 +8,22 @@ public class BulletBehavior : MonoBehaviour
     public float speed = 50f;
     void Start()
     {
-        this.speed *= 10f;
-        this.GetComponent<Rigidbody2D>()
-            .velocity = this.transform.up * this.speed;
+        speed *= 10f;
+        GetComponent<Rigidbody2D>().velocity = transform.up * speed;
     }
 
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Enemy")
+        var tag = collider.gameObject.tag;
+        if (tag == "Enemy" || tag == "Obstacle")
         {
-            Destroy(this.gameObject);
+            Destroy(collider.gameObject);
+            Destroy(gameObject);
         }
-
     }
 
     void OnBecameInvisible() {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

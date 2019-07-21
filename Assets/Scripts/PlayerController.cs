@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb2D;
     Vector2 movimiento;
 
+    public AudioSource audioSource;
+    public AudioClip collisionClip;
+
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -35,5 +38,14 @@ public class PlayerController : MonoBehaviour
         transform.position = PosicionLimitada;
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Collider2D collider = collision.collider;
 
+        if (collider.gameObject.tag == "Enemy" ||
+            collider.gameObject.tag == "Obstacle")
+        {
+            ;
+        }
+    }
 }

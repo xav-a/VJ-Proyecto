@@ -5,12 +5,24 @@ using UnityEngine;
 public class Obstaculos : MonoBehaviour
 {
 
-    public float velocidad =100f;
+    public float velocidad = 100f;
     public Rigidbody2D rb;
+
+    public AudioSource audioSource;
+    public AudioClip destroyedClip;
+
+    public ParticleSystem explosionParticle;
+
+    void Awake()
+    {
+        gameObject.tag = "Obstacle";
+        rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.up * -velocidad + Vector2.right * Random.Range(-50,50);
         rb.angularVelocity = 80f;
     }
@@ -30,8 +42,10 @@ public class Obstaculos : MonoBehaviour
 
         if (HplayerGO.tag == "Player")
         {
+            audioSource.PlayOneShot(destroyedClip);
+            Instantiate(explosionParticle, transform.position, transform.rotation);
             GameObject.Destroy(HplayerGO);
-            GameObject.Destroy(obsGO);
+            GameObject.Destroy(obsGO, destroyedClip.length/2.5f);
         }
     }
 
