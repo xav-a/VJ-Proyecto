@@ -56,11 +56,14 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Terminate()
     {
-        GetComponent<Collider2D>().enabled = false;
+        rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb2D.constraints = RigidbodyConstraints2D.FreezePosition;
         audioSource.PlayOneShot(deathClip);
+        GetComponent<Collider2D>().enabled = false;
         GetComponent<Animator>().SetTrigger("Death");
-        yield return new WaitForSeconds(deathClip.length);
+        this.enabled = false;
 
+        yield return new WaitForSeconds(deathClip.length);
         Destroy(gameObject);
     }
 }

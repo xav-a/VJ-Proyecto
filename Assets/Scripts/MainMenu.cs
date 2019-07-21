@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayScene()
     {
-        SceneManager.LoadScene("SpaceLevel1");
+        SceneManager.LoadScene("ShootDemo2");
     }
 
     public void History(GameObject history)

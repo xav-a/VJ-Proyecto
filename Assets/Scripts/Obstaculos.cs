@@ -6,7 +6,7 @@ public class Obstaculos : MonoBehaviour
 {
 
     public float velocidad = 100f;
-    public Rigidbody2D rb;
+    public Rigidbody2D rb2D;
 
     public AudioSource audioSource;
     public AudioClip collisionClip;
@@ -14,15 +14,15 @@ public class Obstaculos : MonoBehaviour
     void Awake()
     {
         gameObject.tag = "Obstacle";
-        rb = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = Vector2.up * -velocidad + Vector2.right * Random.Range(-50,50);
-        rb.angularVelocity = 80f;
+        rb2D.velocity = Vector2.up * -velocidad + Vector2.right * Random.Range(-50,50);
+        rb2D.angularVelocity = 80f;
     }
 
     // Update is called once per frame
@@ -46,13 +46,15 @@ public class Obstaculos : MonoBehaviour
 
     public void Die()
     {
+
         StartCoroutine(Terminate());
     }
 
     IEnumerator Terminate()
     {
-        GetComponent<Collider2D>().enabled = false;
+        rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         audioSource.PlayOneShot(collisionClip);
+        GetComponent<Collider2D>().enabled = false;
         GetComponent<Animator>().SetTrigger("Death");
 
         yield return new WaitForSeconds(collisionClip.length);
