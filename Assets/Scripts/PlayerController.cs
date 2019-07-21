@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     Vector2 movimiento;
 
     public AudioSource audioSource;
-    public AudioClip collisionClip;
+    public AudioClip deathClip;
 
     void Awake()
     {
@@ -47,5 +47,20 @@ public class PlayerController : MonoBehaviour
         {
             ;
         }
+    }
+
+    public void Die()
+    {
+        StartCoroutine(Terminate());
+    }
+
+    IEnumerator Terminate()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        audioSource.PlayOneShot(deathClip);
+        GetComponent<Animator>().SetTrigger("Death");
+        yield return new WaitForSeconds(deathClip.length);
+
+        Destroy(gameObject);
     }
 }

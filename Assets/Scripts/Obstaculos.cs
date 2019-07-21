@@ -9,9 +9,7 @@ public class Obstaculos : MonoBehaviour
     public Rigidbody2D rb;
 
     public AudioSource audioSource;
-    public AudioClip destroyedClip;
-
-    public ParticleSystem explosionParticle;
+    public AudioClip collisionClip;
 
     void Awake()
     {
@@ -38,15 +36,27 @@ public class Obstaculos : MonoBehaviour
     {
         var HplayerCol = col.collider;
         var HplayerGO = HplayerCol.gameObject;
-        var obsGO = col.otherCollider.gameObject;
 
         if (HplayerGO.tag == "Player")
         {
-            audioSource.PlayOneShot(destroyedClip);
-            Instantiate(explosionParticle, transform.position, transform.rotation);
-            GameObject.Destroy(HplayerGO);
-            GameObject.Destroy(obsGO, destroyedClip.length/2.5f);
+            HplayerGO.GetComponent<PlayerController>().Die();
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        StartCoroutine(Terminate());
+    }
+
+    IEnumerator Terminate()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        audioSource.PlayOneShot(collisionClip);
+        GetComponent<Animator>().SetTrigger("Death");
+
+        yield return new WaitForSeconds(collisionClip.length);
+        Destroy(gameObject);
     }
 
 }

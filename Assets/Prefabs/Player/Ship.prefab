@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 213424985065277439}
   - component: {fileID: 6676298543261917199}
   - component: {fileID: 4469911039839576354}
+  - component: {fileID: 1747620503870970498}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Player
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 9260185987517692}
   m_LocalRotation: {x: -0, y: 0.004919317, z: -0, w: 0.99998796}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children:
   - {fileID: 8020123812927113312}
   m_Father: {fileID: 0}
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 5
   audioSource: {fileID: 4469911039839576354}
-  collisionClip: {fileID: 8300000, guid: d4844689c0701da4b988125cd77d7dbb, type: 3}
+  deathClip: {fileID: 8300000, guid: 7bb77addc1c799648b8c7bfd09aa71af, type: 3}
 --- !u!50 &213424985065277439
 Rigidbody2D:
   serializedVersion: 4
@@ -318,6 +319,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1747620503870970498
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9260185987517692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d6f37968a53e1cc448bda4662280c1b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4011171529868600589
 PrefabInstance:
   m_ObjectHideFlags: 0

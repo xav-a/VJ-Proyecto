@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 5036331657880112901}
   - component: {fileID: 2041110961213195904}
   - component: {fileID: 5840276914598514828}
+  - component: {fileID: 1487466845307772385}
   m_Layer: 0
-  m_Name: Debris (2)
+  m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,8 +277,7 @@ MonoBehaviour:
   velocidad: 100
   rb: {fileID: 5036331657880112901}
   audioSource: {fileID: 5840276914598514828}
-  destroyedClip: {fileID: 8300000, guid: d4844689c0701da4b988125cd77d7dbb, type: 3}
-  explosionParticle: {fileID: 19800002, guid: cafecd3fc3b761c45bb1553f35cf5c96, type: 3}
+  collisionClip: {fileID: 8300000, guid: 7bb77addc1c799648b8c7bfd09aa71af, type: 3}
 --- !u!82 &5840276914598514828
 AudioSource:
   m_ObjectHideFlags: 0
@@ -374,3 +374,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1487466845307772385
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428034810548445705}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8fbaa6840a0b2044bd8304247dd03df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

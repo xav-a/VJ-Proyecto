@@ -24,3 +24,6 @@ This repository makes use of Git LFS.
 
 **2D Assets**
     - https://assetstore.unity.com/packages/2d/environments/2d-space-kit-27662
+
+**VFX**
+    - pixelgameart.org

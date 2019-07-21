@@ -18,8 +18,8 @@ public class BulletBehavior : MonoBehaviour
         var tag = collider.gameObject.tag;
         if (tag == "Enemy" || tag == "Obstacle")
         {
-            Destroy(collider.gameObject);
             Destroy(gameObject);
+            collider.gameObject.GetComponent<Obstaculos>().Die();
         }
     }
 
