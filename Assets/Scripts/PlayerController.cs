@@ -19,23 +19,21 @@ public class PlayerController : MonoBehaviour
 
      void Update()
     {
-        movimiento.x = Input.GetAxis("Horizontal");
-        movimiento.y = Input.GetAxis("Vertical");
+        movimiento = new Vector2 (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 
     void FixedUpdate()
     {
         transform.Translate(movimiento * velocidad);
-        //LimitarMovimiento();
+        LimitarNave();
     }
 
-    void LimitarMovimiento()
+    void LimitarNave()
     {
-        Vector2  PosicionLimitada = transform.position;
-        PosicionLimitada.x = Mathf.Clamp(PosicionLimitada.x, -6.89f, 6.89f);
-        PosicionLimitada.y = Mathf.Clamp(PosicionLimitada.y, -0.13f, 0.13f);
-
-        transform.position = PosicionLimitada;
+        Vector2 posicionLimitada = transform.position;
+        posicionLimitada.x = Mathf.Clamp(posicionLimitada.x, 230, 595);
+        posicionLimitada.y = Mathf.Clamp(posicionLimitada.y, 90, 320);
+        transform.position = posicionLimitada;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
