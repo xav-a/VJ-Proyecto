@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1487466845307772385}
   m_Layer: 0
   m_Name: Debris
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 100
-  rb: {fileID: 5036331657880112901}
+  rb2D: {fileID: 0}
   audioSource: {fileID: 5840276914598514828}
   collisionClip: {fileID: 8300000, guid: 7bb77addc1c799648b8c7bfd09aa71af, type: 3}
 --- !u!82 &5840276914598514828

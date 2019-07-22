@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7901514430603018268}
   m_Layer: 8
   m_Name: Asteroid
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 100
-  rb: {fileID: 6068242709656654971}
+  rb2D: {fileID: 0}
   audioSource: {fileID: 3220542516323325186}
   collisionClip: {fileID: 8300000, guid: d4844689c0701da4b988125cd77d7dbb, type: 3}
 --- !u!50 &6068242709656654971

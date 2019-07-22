@@ -5,49 +5,40 @@ using UnityEngine;
 public class ObstacleGenerator : MonoBehaviour
 {
 
-    public GameObject ast1;
-    public GameObject ast4;
-    public GameObject ast6;
-    public GameObject deb2;
-    public GameObject deb3;
-    public GameObject deb4;
+    public int interval = 10;
 
-    private float limitIzq =52;
-    private float limitDer = 786;
+    private int limitIzq = 52;
+    private int limitDer = 786;
     private float limitRoof = 364f;
+
+    public GameObject[] obstacles;
+    private int len, count = 0;
+
+    void Awake()
+    {
+        len = obstacles.Length;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        int selec = (int) Random.Range(1,6.99f);
-        int posX = (int)Random.Range(limitIzq, limitDer);
-        
-        if (selec==1)
+        int posX = Random.Range(limitIzq, limitDer);
+        count++;
+
+        if (len != 0 && count == interval)
         {
-            Instantiate(ast1,new Vector3(posX,limitRoof,0),Quaternion.identity);
-        }else if (selec==2)
-        {
-            Instantiate(ast4, new Vector3(posX, limitRoof, 0), Quaternion.identity);
-        }
-        else if (selec==3)
-        {
-            Instantiate(ast6, new Vector3(posX, limitRoof, 0), Quaternion.identity);
-        }
-        else if (selec==4)
-        {
-            Instantiate(deb2, new Vector3(posX, limitRoof, 0), Quaternion.identity); 
-        }else if (selec==5)
-        {
-            Instantiate(deb3, new Vector3(posX, limitRoof, 0), Quaternion.identity);
-        }
-        else if (selec==6)
-        {
-            Instantiate(deb4, new Vector3(posX, limitRoof, 0), Quaternion.identity);
+            count = 0;
+            int selec = Random.Range(0, len);
+            Instantiate(
+                obstacles[selec],
+                new Vector3(posX,limitRoof,0),
+                Quaternion.identity);
         }
     }
 }

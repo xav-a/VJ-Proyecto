@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstaculos : MonoBehaviour
+public class ObstacleController : MonoBehaviour
 {
 
     public float velocidad = 100f;

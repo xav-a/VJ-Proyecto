@@ -92,9 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fffe027d289b6b4892a8e4f9ce57e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ast1: {fileID: 3235664466121286589, guid: d32d5ecdd2b232e4da10aca67ac37704, type: 3}
-  ast4: {fileID: 3563987922745780656, guid: cdca2d94388d52a4fad3b9005747f36d, type: 3}
-  ast6: {fileID: 3563987922745780656, guid: cdca2d94388d52a4fad3b9005747f36d, type: 3}
-  deb2: {fileID: 6428034810548445705, guid: 75a899db4a36fa047a977763d415ffc9, type: 3}
-  deb3: {fileID: 8722798321036672866, guid: 47add69c245417a4abd7d3506e9897a5, type: 3}
-  deb4: {fileID: 3300882083215218373, guid: 03d5cc7d00de83b43ab81d41d9759783, type: 3}
+  interval: 16
+  obstacles:
+  - {fileID: 3235664466121286589, guid: d32d5ecdd2b232e4da10aca67ac37704, type: 3}
+  - {fileID: 2217518563847241924, guid: bc0eefc2efe365f4f8b56890f53a50ce, type: 3}
+  - {fileID: 6466132261904225373, guid: 5823a998f67aefe41ba495bd041da1b9, type: 3}
+  - {fileID: 6428034810548445705, guid: 75a899db4a36fa047a977763d415ffc9, type: 3}
+  - {fileID: 4070225776078681691, guid: 52335dee21c001b489de1a042877035b, type: 3}
+  - {fileID: 1086542419560156579, guid: 9133fe394af260c4fad2e37c44e5ac7d, type: 3}
