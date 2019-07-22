@@ -28,10 +28,13 @@ public class Obstaculos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
-   private void OnCollisionEnter2D(Collision2D col)
+    void OnBecameInvisible() {
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
 
     {
         var HplayerCol = col.collider;
