@@ -9,16 +9,21 @@ public class Timer : MonoBehaviour
     public Text timeText;
     public float time = 0.0f;
 
-    float finishTime = 0.0f;
+    private bool timerIsActive = true;
 
     public void Update()
     {
-        time -= Time.deltaTime;
-        timeText.text = "00 : 0" + time.ToString("f0");
-
-        if (time <= 0)
+        if (timerIsActive)
         {
-            SceneManager.LoadScene("SpaceLevel1");
+            time -= Time.deltaTime;
+            timeText.text = "00 : " + time.ToString("f0");
+
+            if (time <= 0)
+            {
+                timerIsActive = false;
+                SceneManager.LoadScene("SpaceLevel1");
+            }
         }
+        
     }
 }
