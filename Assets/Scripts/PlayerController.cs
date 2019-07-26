@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
     void LimitarNave()
     {
         Vector2 posicionLimitada = transform.position;
-        posicionLimitada.x = Mathf.Clamp(posicionLimitada.x, 230, 595);
-        posicionLimitada.y = Mathf.Clamp(posicionLimitada.y, 90, 320);
+        posicionLimitada.x = Mathf.Clamp(posicionLimitada.x, 76, 495);
+        posicionLimitada.y = Mathf.Clamp(posicionLimitada.y, 50, 250);
         transform.position = posicionLimitada;
     }
 
