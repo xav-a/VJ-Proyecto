@@ -5,11 +5,11 @@ using UnityEngine;
 public class ObstacleGenerator : MonoBehaviour
 {
 
-    public int interval = 20;
+    public int interval = 25;
 
-    private int limitIzq = 52;
-    private int limitDer = 786;
-    private float limitRoof = 364f;
+    private int limitIzq;
+    private int limitDer;
+    private float limitRoof;
 
     public GameObject[] obstacles;
     private int len, count = 0;
@@ -19,8 +19,9 @@ public class ObstacleGenerator : MonoBehaviour
         Camera camera = Camera.main;
         float halfHeight = camera.orthographicSize;
         float halfWidth = camera.aspect * halfHeight;
-        limitIzq = (int) (-halfWidth);
-        limitDer =  (int) halfWidth;
+        limitIzq = (int) (-halfWidth + camera.transform.position.x);
+        limitDer =  (int) (halfWidth + camera.transform.position.x);
+        limitRoof = (int) (halfHeight + camera.transform.position.y);
         len = obstacles.Length;
     }
 

@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDestroyable
 {
-    public float velocidad = 10f;
-    public GameObject weapon;
-    Rigidbody2D rb2D;
-    Vector2 movement;
+    public float velocidad = 15f;
 
+    private int collectibles = 0;
+
+    public GameObject weapon;
     public AudioSource audioSource;
     public AudioClip deathClip;
+    public AudioClip collectibleClip;
+
+    Rigidbody2D rb2D;
+    Vector2 movement;
 
     void Awake()
     {
@@ -53,6 +57,12 @@ public class PlayerController : MonoBehaviour, IDestroyable
         {
             ;
         }
+    }
+
+    public void IncrementCollectibles()
+    {
+        //audioSource.PlayOneShot(collectibleClip);
+        collectibles++;
     }
 
     public void Destroy()
