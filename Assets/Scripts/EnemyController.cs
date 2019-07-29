@@ -9,22 +9,34 @@ public class EnemyController : MonoBehaviour, IDestroyable
     public int health = 100;
 
     [SerializeField]
-	public float moveSpeed = 100f, frequency = 20f, magnitude = 500f;
+	public float moveSpeed = 25f, frequency = 20f, magnitude = 500f;
 
-
+    public GameObject target;
     public GameObject weapon;
     public AudioSource audioSource;
     public AudioClip deathClip;
     private Vector3 pos;
+    private Vector3 targetPos;
+
+    private Direction vDirection;
+    private Direction hDirection;
 
     void Awake()
     {
         gameObject.tag = "Enemy";
+        targetPos = target.transform.position;
     }
 
     void Start()
     {
         pos = transform.position;
+        vDirection = (targetPos.y > pos.y) ?
+            Direction.UP :
+            Direction.DOWN;
+        hDirection = (targetPos.x < pos.x) ?
+            Direction.UP :
+            Direction.DOWN;
+
     }
 
     void Update()
@@ -37,17 +49,21 @@ public class EnemyController : MonoBehaviour, IDestroyable
         {
             weapon.GetComponent<WeaponController>().FireWeapon();
         }
-
+        Movement();
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
+        transform.position = pos;
         //transform.position = pos;
-        if (health <= 0)
-        {
-            Debug.Log("Enemy is Dead");
-            Destroy();
-        }
+        if (health <= 0) Destroy();
+    }
+
+    void Movement()
+    {
+        //pos = transform.position;
+        pos.x += Time.deltaTime * (int) hDirection * moveSpeed;
+        pos.y += Time.deltaTime * (int) vDirection * moveSpeed;
     }
 
     // Update is called once per frame
@@ -82,8 +98,6 @@ public class EnemyController : MonoBehaviour, IDestroyable
         pos += (axis * dir * Time.deltaTime * moveSpeed);
         float omega = (Time.time * Time.deltaTime * frequency * Mathf.PI);
         pos = pos + (waveOrient * magnitude * Mathf.Sin(omega));
-
-
 	}
 
     void OnBecameInvisible() {
