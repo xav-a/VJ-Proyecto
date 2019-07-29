@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleGenerator : MonoBehaviour
 {
 
-    public int interval = 10;
+    public int interval = 20;
 
     private int limitIzq = 52;
     private int limitDer = 786;
@@ -16,6 +16,11 @@ public class ObstacleGenerator : MonoBehaviour
 
     void Awake()
     {
+        Camera camera = Camera.main;
+        float halfHeight = camera.orthographicSize;
+        float halfWidth = camera.aspect * halfHeight;
+        limitIzq = (int) (-halfWidth);
+        limitDer =  (int) halfWidth;
         len = obstacles.Length;
     }
 

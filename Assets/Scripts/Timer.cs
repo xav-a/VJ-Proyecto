@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     public Text timeText;
-    public float time = 0.0f;
+    public float time = 60f;
 
     private bool timerIsActive = true;
 
@@ -21,9 +21,9 @@ public class Timer : MonoBehaviour
             if (time <= 0)
             {
                 timerIsActive = false;
-                SceneManager.LoadScene("SpaceLevel1");
+                SceneManager.LoadScene("ShootDemo3");
             }
         }
-        
+
     }
 }

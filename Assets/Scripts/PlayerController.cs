@@ -30,18 +30,18 @@ public class PlayerController : MonoBehaviour, IDestroyable
         }
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         transform.Translate(movement * velocidad);
-        LimitarNave();
+        ClampMovement();
     }
 
-    void LimitarNave()
+    void ClampMovement()
     {
-        Vector2 posicionLimitada = transform.position;
-        posicionLimitada.x = Mathf.Clamp(posicionLimitada.x, 76, 495);
-        posicionLimitada.y = Mathf.Clamp(posicionLimitada.y, 50, 250);
-        transform.position = posicionLimitada;
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        pos.x = Mathf.Clamp01(pos.x);
+        pos.y = Mathf.Clamp01(pos.y);
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
