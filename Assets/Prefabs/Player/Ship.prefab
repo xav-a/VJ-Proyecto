@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 5
+  weapon: {fileID: 8020123812927113319}
   audioSource: {fileID: 4469911039839576354}
   deathClip: {fileID: 8300000, guid: 7bb77addc1c799648b8c7bfd09aa71af, type: 3}
 --- !u!50 &213424985065277439
@@ -235,7 +236,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -412,6 +413,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c238b9f94712e8744bb89f5588cd137b, type: 3}
+--- !u!1 &8020123812927113319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6406299399346351466, guid: c238b9f94712e8744bb89f5588cd137b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4011171529868600589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8020123812927113312 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6406299399346351469, guid: c238b9f94712e8744bb89f5588cd137b,

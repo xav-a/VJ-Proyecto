@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleController : MonoBehaviour
+public class ObstacleController : MonoBehaviour, IDestroyable
 {
 
     public float velocidad = 100f;
@@ -42,24 +42,22 @@ public class ObstacleController : MonoBehaviour
 
         if (HplayerGO.tag == "Player")
         {
-            HplayerGO.GetComponent<PlayerController>().Die();
-            Die();
+            HplayerGO.GetComponent<IDestroyable>().Destroy();
+            Destroy();
         }
     }
 
-    public void Die()
+    public void Destroy()
     {
-
+        audioSource.PlayOneShot(collisionClip);
+        rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Animator>().SetTrigger("Death");
         StartCoroutine(Terminate());
     }
 
-    IEnumerator Terminate()
+    public IEnumerator Terminate()
     {
-        rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-        audioSource.PlayOneShot(collisionClip);
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<Animator>().SetTrigger("Death");
-
         yield return new WaitForSeconds(collisionClip.length);
         Destroy(gameObject);
     }

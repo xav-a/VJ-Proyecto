@@ -17,18 +17,11 @@ public class WeaponController : MonoBehaviour
     {
         audioSource = GetComponentInParent<AudioSource>();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            audioSource.PlayOneShot(fire1Clip, .60f);
-            FireWeapon();
-        }
-    }
 
-    void FireWeapon()
+
+    public void FireWeapon()
     {
+        audioSource.PlayOneShot(fire1Clip, .60f);
         GameObject bullet = Instantiate(
             bulletType,
             transform.position,

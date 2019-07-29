@@ -187,4 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624b703562c886f41aba3df732ac3d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectiveTags:
+  - Enemy
+  - Obstacle
   speed: 60
+  direction: 1
