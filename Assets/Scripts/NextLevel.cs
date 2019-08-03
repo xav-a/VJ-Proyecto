@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
+    public GameObject message;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +24,21 @@ public class NextLevel : MonoBehaviour
         var otherObject = collider.gameObject;
         if (otherObject.tag == "Player")
         {
-            SceneManager.LoadScene("ShootDemo3");
+            message.SetActive(!message.activeSelf);
         }
     }
-   
+    
+    public void restartLevel1()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+        //message.SetActive(!message.activeSelf);
+    }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene("ShootDemo3");
+    }
+
+
 }

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
+    public GameObject message;
+
     public Text timeText;
     public float time = 10f;
 
@@ -26,7 +28,8 @@ public class Timer : MonoBehaviour
             {
                 Debug.Log("HERE");
                 timerIsActive = false;
-                SceneManager.LoadScene("ShootDemo3");
+                //SceneManager.LoadScene("ShootDemo3");
+                message.SetActive(!message.activeSelf);
             }
         }
 

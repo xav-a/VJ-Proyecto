@@ -57,7 +57,7 @@ public class Collectibles : MonoBehaviour
                     new Vector3(posX, posY, 0),
                     Quaternion.identity
                 );
-                time = 5;
+                time = 2;
                 cantCol += 1;
                 creado = true;
             }
