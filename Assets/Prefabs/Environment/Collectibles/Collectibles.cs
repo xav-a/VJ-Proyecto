@@ -19,6 +19,12 @@ public class Collectibles : MonoBehaviour
     private int limitFloor;
 
     private GameObject copy;
+    public GameObject ship;
+
+    public AudioSource audioSource;
+    public AudioClip ItemAppears;
+    public AudioClip GotItem;
+    public AudioClip ShieldAppears;
 
     void Awake()
     {
@@ -52,12 +58,13 @@ public class Collectibles : MonoBehaviour
             {
                 int posX = Random.Range(limitIzq, limitDer);
                 int posY = Random.Range(limitFloor, limitRoof);
+                audioSource.PlayOneShot(ItemAppears, .60f);
                 copy = Instantiate(
                     collectible,
                     new Vector3(posX, posY, 0),
                     Quaternion.identity
                 );
-                time = 2;
+                time = 5;
                 cantCol += 1;
                 creado = true;
             }
@@ -66,8 +73,24 @@ public class Collectibles : MonoBehaviour
 
         if (creado && copy==null)
         {
+            audioSource.PlayOneShot(GotItem, .60f);
             ColText.text = "X " + cantCol;
             creado = false;
+            creado = false;
+            if ((cantCol%3)==0)
+            {
+                foreach (Transform  child in this.ship.transform)
+                {
+                    if (child.tag=="Shield")
+                    {
+                        if (!child.gameObject.activeSelf)
+                        {
+                            audioSource.PlayOneShot(ShieldAppears, .60f);
+                            child.gameObject.SetActive(true);
+                        }
+
+                    }
+                }
         }
     }
 }

@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour, IDestroyable
     public AudioSource audioSource;
     public AudioClip deathClip;
     public AudioClip collectibleClip;
+    public AudioSource audioShield;
+    public AudioClip shieldDisappears;
 
     Rigidbody2D rb2D;
     Vector2 movement;
@@ -63,6 +65,22 @@ public class PlayerController : MonoBehaviour, IDestroyable
     {
         //audioSource.PlayOneShot(collectibleClip);
         collectibles++;
+        foreach (Transform child in gameObject.transform)
+        {
+            if (child.tag == "Shield")
+            {
+                if (!child.gameObject.activeSelf)
+                {
+                    StartCoroutine(Terminate());
+                }
+                else
+                {
+                    audioShield.PlayOneShot(shieldDisappears, .60f);
+                    child.gameObject.SetActive(false);
+                }
+
+            }
+        }
     }
 
     public void Destroy()
