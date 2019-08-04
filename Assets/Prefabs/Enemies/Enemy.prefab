@@ -118,6 +118,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireProbability: 2
   health: 100
+  xCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0023498535
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.49999988
+      value: 0.4929168
+      inSlope: 0.0000027159588
+      outSlope: 0.0000027159588
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9893669
+      value: 0.0023516417
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   moveSpeed: 100
   frequency: 20
   magnitude: 500
@@ -231,7 +264,7 @@ Animator:
   m_GameObject: {fileID: 7691532136106724000}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c8fbaa6840a0b2044bd8304247dd03df, type: 2}
+  m_Controller: {fileID: 9100000, guid: 69c75d8e76620c04bac05f913a2b9a85, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

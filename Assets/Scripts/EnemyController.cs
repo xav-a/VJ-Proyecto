@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour, IDestroyable
     public int fireProbability = 10;
     public int health = 100;
 
+    public AnimationCurve xCurve;
+
     [SerializeField]
 	public float moveSpeed = 25f, frequency = 20f, magnitude = 500f;
 
@@ -20,6 +22,8 @@ public class EnemyController : MonoBehaviour, IDestroyable
 
     private Direction vDirection;
     private Direction hDirection;
+
+
 
     void Awake()
     {
@@ -42,13 +46,16 @@ public class EnemyController : MonoBehaviour, IDestroyable
     void Update()
     {
         //SinusoidalMovement(vertical: true, positive: false);
-
+        float acum += Time.deltaTime;
         int roll = UnityEngine.Random.Range(1, 100);
 
         if (roll <= fireProbability)
         {
             weapon.GetComponent<WeaponController>().FireWeapon();
         }
+        float t = acum / xdeltaTime;
+
+        float sample = xCurve.Evaluate(Time.time) * Time.deltaTime;
         Movement();
     }
 
