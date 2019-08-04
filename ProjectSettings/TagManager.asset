@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Obstacle
   - Panel
+  - Shield
   layers:
   - Default
   - TransparentFX
