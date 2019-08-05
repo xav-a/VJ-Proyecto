@@ -11,13 +11,15 @@ public class EnemyController : MonoBehaviour, IDestroyable
     public AnimationCurve xCurve;
 
     [SerializeField]
-	public float moveSpeed = 25f, frequency = 20f, magnitude = 500f;
+	public float moveSpeed = 100f, magnitude = 100f;
 
     public GameObject target;
     public GameObject weapon;
     public AudioSource audioSource;
     public AudioClip deathClip;
+    public AnimationCurve movePath;
     private Vector3 pos;
+    private Vector3 origin;
     private Vector3 targetPos;
 
     private Direction vDirection;
@@ -27,20 +29,21 @@ public class EnemyController : MonoBehaviour, IDestroyable
 
     void Awake()
     {
+        magnitude *= 10f;
         gameObject.tag = "Enemy";
         targetPos = target.transform.position;
+        movePath.postWrapMode = WrapMode.Loop;
     }
 
     void Start()
     {
         pos = transform.position;
-        vDirection = (targetPos.y > pos.y) ?
+        vDirection = (pos.y < targetPos.y) ?
             Direction.UP :
             Direction.DOWN;
-        hDirection = (targetPos.x < pos.x) ?
-            Direction.UP :
+        hDirection = (pos.x > targetPos.x) ?
+            Direction.RIGHT :
             Direction.DOWN;
-
     }
 
     void Update()
@@ -68,9 +71,11 @@ public class EnemyController : MonoBehaviour, IDestroyable
 
     void Movement()
     {
-        //pos = transform.position;
-        pos.x += Time.deltaTime * (int) hDirection * moveSpeed;
+        float sample = movePath.Evaluate(Time.time);
+        //Debug.Log($"{sample} curve {magnitude}");
+        //pos.x += Time.deltaTime * (int) hDirection * moveSpeed;
         pos.y += Time.deltaTime * (int) vDirection * moveSpeed;
+        pos.x += (sample * magnitude) * Time.deltaTime;
     }
 
     // Update is called once per frame
@@ -95,17 +100,6 @@ public class EnemyController : MonoBehaviour, IDestroyable
         yield return new WaitForSeconds(deathClip.length);
         Destroy(gameObject);
     }
-
-    void SinusoidalMovement(bool vertical, bool positive)
-	{
-        Vector3 axis = (vertical) ? transform.up : transform.right;
-        Vector3 waveOrient = (vertical) ? transform.right : transform.up;
-        int dir = (positive) ? 1 : -1;
-
-        pos += (axis * dir * Time.deltaTime * moveSpeed);
-        float omega = (Time.time * Time.deltaTime * frequency * Mathf.PI);
-        pos = pos + (waveOrient * magnitude * Mathf.Sin(omega));
-	}
 
     void OnBecameInvisible() {
         Destroy(gameObject);

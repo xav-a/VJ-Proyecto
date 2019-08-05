@@ -19,6 +19,11 @@ public class Collectibles : MonoBehaviour
     private int limitFloor;
 
     private GameObject copy;
+    public GameObject ship;
+
+    public AudioSource audioSource;
+    public AudioClip ItemAppears;
+    public AudioClip GotItem;
 
     void Awake()
     {
@@ -52,6 +57,7 @@ public class Collectibles : MonoBehaviour
             {
                 int posX = Random.Range(limitIzq, limitDer);
                 int posY = Random.Range(limitFloor, limitRoof);
+                audioSource.PlayOneShot(ItemAppears, .60f);
                 copy = Instantiate(
                     collectible,
                     new Vector3(posX, posY, 0),
@@ -66,6 +72,7 @@ public class Collectibles : MonoBehaviour
 
         if (creado && copy==null)
         {
+            audioSource.PlayOneShot(GotItem, .60f);
             ColText.text = "X " + cantCol;
             creado = false;
         }

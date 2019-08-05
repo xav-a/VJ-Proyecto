@@ -8,6 +8,12 @@ public interface IDestroyable
     /// Wrapper method, must call `Terminate()` at the end of its execution
     /// Any extra steps or processing before destroying the object is done here.
     /// </summary>
+    //void DecreaseHealth(float factor);
+
+    /// <summary>
+    /// Wrapper method, must call `Terminate()` at the end of its execution
+    /// Any extra steps or processing before destroying the object is done here.
+    /// </summary>
     void Destroy();
 
     /// <summary>
