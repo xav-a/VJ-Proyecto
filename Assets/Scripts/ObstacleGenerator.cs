@@ -6,16 +6,18 @@ public class ObstacleGenerator : MonoBehaviour
 {
 
     public int interval = 25;
+    public float speed = 80f;
 
     protected int limitIzq;
     protected int limitDer;
     protected int limitRoof;
 
     public GameObject[] obstacles;
-    protected int len, count = 0;
+    protected int len, count;
 
     void Awake()
     {
+        count = interval;
         Camera camera = Camera.main;
         float halfHeight = camera.orthographicSize;
         float halfWidth = camera.aspect * halfHeight;
@@ -35,16 +37,19 @@ public class ObstacleGenerator : MonoBehaviour
     void Update()
     {
         int posX = Random.Range(limitIzq, limitDer);
-        count++;
 
-        if (len != 0 && count == interval)
+        if (len != 0 && count >= interval)
         {
             count = 0;
             int selec = Random.Range(0, len);
+            GameObject obj = obstacles[selec];
+            obj.GetComponent<ObstacleController>().speed = speed;
             Instantiate(
-                obstacles[selec],
+                obj,
                 new Vector3(posX,limitRoof,0),
                 Quaternion.identity);
         }
+
+        count++;
     }
 }

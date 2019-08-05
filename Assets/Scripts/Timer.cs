@@ -26,7 +26,6 @@ public class Timer : MonoBehaviour
             timeText.text = "00 : " + time.ToString("f0");
             if (time <= 0)
             {
-                Debug.Log("HERE");
                 timerIsActive = false;
                 //SceneManager.LoadScene("ShootDemo3");
                 message.SetActive(!message.activeSelf);

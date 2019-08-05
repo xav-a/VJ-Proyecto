@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleController : MonoBehaviour, IDestroyable
 {
 
-    public float velocidad = 100f;
+    public float speed = 100f;
     public Rigidbody2D rb2D;
 
     public AudioSource audioSource;
@@ -21,7 +21,7 @@ public class ObstacleController : MonoBehaviour, IDestroyable
     // Start is called before the first frame update
     void Start()
     {
-        rb2D.velocity = Vector2.up * -velocidad + Vector2.right * Random.Range(-50,50);
+        rb2D.velocity = Vector2.up * -speed + Vector2.right * Random.Range(-50,50);
         rb2D.angularVelocity = 80f;
     }
 

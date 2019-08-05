@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDestroyable
 {
-    public float velocidad = 15f;
+    public float speed = 15f;
 
     private int collectibles = 0;
 
     public GameObject weapon;
+    public GameObject shield;
     public AudioSource audioSource;
     public AudioClip deathClip;
-    public AudioSource audioShield;
-    public AudioClip shieldDisappears;
+    public AudioClip shieldAppear;
 
     Rigidbody2D rb2D;
     Vector2 movement;
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour, IDestroyable
 
     void LateUpdate()
     {
-        transform.Translate(movement * velocidad);
+        transform.Translate(movement * speed);
         ClampMovement();
     }
 
@@ -58,26 +58,17 @@ public class PlayerController : MonoBehaviour, IDestroyable
         {
             ;
         }
+        Debug.Log("Collision Here!");
     }
 
     public void IncrementCollectibles()
     {
         collectibles++;
-        foreach (Transform child in gameObject.transform)
-        {
-            if (child.tag == "Shield")
-            {
-                if (!child.gameObject.activeSelf)
-                {
-                    StartCoroutine(Terminate());
-                }
-                else
-                {
-                    audioShield.PlayOneShot(shieldDisappears, .60f);
-                    child.gameObject.SetActive(false);
-                }
 
-            }
+        if (collectibles == 3)
+        {
+            audioSource.PlayOneShot(shieldAppear, .60f);
+            shield.SetActive(true);
         }
     }
 
@@ -97,5 +88,10 @@ public class PlayerController : MonoBehaviour, IDestroyable
     {
         yield return new WaitForSeconds(deathClip.length);
         Destroy(gameObject);
+    }
+
+    public int GetCollectibles()
+    {
+        return collectibles;
     }
 }

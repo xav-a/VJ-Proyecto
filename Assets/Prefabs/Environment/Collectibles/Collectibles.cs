@@ -24,7 +24,6 @@ public class Collectibles : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip ItemAppears;
     public AudioClip GotItem;
-    public AudioClip ShieldAppears;
 
     void Awake()
     {
@@ -76,22 +75,6 @@ public class Collectibles : MonoBehaviour
             audioSource.PlayOneShot(GotItem, .60f);
             ColText.text = "X " + cantCol;
             creado = false;
-            creado = false;
-            if ((cantCol%3)==0)
-            {
-                foreach (Transform  child in this.ship.transform)
-                {
-                    if (child.tag=="Shield")
-                    {
-                        if (!child.gameObject.activeSelf)
-                        {
-                            audioSource.PlayOneShot(ShieldAppears, .60f);
-                            child.gameObject.SetActive(true);
-                        }
-
-                    }
-                }
-            }
         }
     }
 }

@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour, IDestroyable
     public int health = 100;
 
     [SerializeField]
-	public float moveSpeed = 25f, magnitude = 4f;
+	public float moveSpeed = 100f, magnitude = 100f;
 
     public GameObject target;
     public GameObject weapon;
@@ -25,8 +25,10 @@ public class EnemyController : MonoBehaviour, IDestroyable
 
     void Awake()
     {
+        magnitude *= 10f;
         gameObject.tag = "Enemy";
         targetPos = target.transform.position;
+        movePath.postWrapMode = WrapMode.Loop;
     }
 
     void Start()
@@ -63,7 +65,7 @@ public class EnemyController : MonoBehaviour, IDestroyable
     void Movement()
     {
         float sample = movePath.Evaluate(Time.time);
-        //Debug.Log($"{sample} curve");
+        //Debug.Log($"{sample} curve {magnitude}");
         //pos.x += Time.deltaTime * (int) hDirection * moveSpeed;
         pos.y += Time.deltaTime * (int) vDirection * moveSpeed;
         pos.x += (sample * magnitude) * Time.deltaTime;

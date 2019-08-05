@@ -6,6 +6,7 @@ public class EnemyGenerator : ObstacleGenerator
 {
 
     public int seqNumber = 3;
+    private int quad = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,36 +16,35 @@ public class EnemyGenerator : ObstacleGenerator
     // Update is called once per frame
     void Update()
     {
-        count++;
-        if (len != 0 && count == interval)
+        if (len != 0 && count >= interval)
         {
             float fourth = (float) (limitDer - limitIzq) / 4f;
 
             StartCoroutine(
                 GenerateObstacles(1f, seqNumber, fourth)
             );
-
             count = 0;
         }
+
+        count++;
     }
 
     IEnumerator GenerateObstacles(float time, int number, float offset)
     {
-        int side = Random.Range(0, 2);
-        side = (side == 0) ? -1 : 1;
+        quad = (count % 3) + 1;
         int select = Random.Range(0, len);
         while (number-- != 0)
         {
             Instantiate(
                 obstacles[select],
                 new Vector3(
-                    Camera.main.transform.position.x + (side * offset),
+                    limitIzq + (quad * offset),
                     limitRoof,
                     0),
                 Quaternion.identity);
             yield return new WaitForSeconds(time);
-
         }
+        quad++;
     }
 
 }
