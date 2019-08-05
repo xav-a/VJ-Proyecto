@@ -125,6 +125,39 @@ MonoBehaviour:
   weapon: {fileID: 2440896151113897258}
   audioSource: {fileID: 1458923472252414728}
   deathClip: {fileID: 8300000, guid: af636180a06045c41802440c6ef90368, type: 3}
+  movePath:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.007080078
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4915064
+      value: 0.49412405
+      inSlope: 0.0035540627
+      outSlope: 0.0035540627
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99575806
+      value: 0.009439576
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!82 &1458923472252414728
 AudioSource:
   m_ObjectHideFlags: 0

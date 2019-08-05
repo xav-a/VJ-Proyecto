@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour, IDestroyable
     public GameObject weapon;
     public AudioSource audioSource;
     public AudioClip deathClip;
-    public AudioClip collectibleClip;
     public AudioSource audioShield;
     public AudioClip shieldDisappears;
 
@@ -63,7 +62,6 @@ public class PlayerController : MonoBehaviour, IDestroyable
 
     public void IncrementCollectibles()
     {
-        //audioSource.PlayOneShot(collectibleClip);
         collectibles++;
         foreach (Transform child in gameObject.transform)
         {

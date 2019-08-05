@@ -7,12 +7,12 @@ public class ObstacleGenerator : MonoBehaviour
 
     public int interval = 25;
 
-    private int limitIzq;
-    private int limitDer;
-    private float limitRoof;
+    protected int limitIzq;
+    protected int limitDer;
+    protected int limitRoof;
 
     public GameObject[] obstacles;
-    private int len, count = 0;
+    protected int len, count = 0;
 
     void Awake()
     {
