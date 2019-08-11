@@ -49,16 +49,17 @@ public class EnemyController : MonoBehaviour, IDestroyable
     void Update()
     {
         //SinusoidalMovement(vertical: true, positive: false);
-        float acum += Time.deltaTime;
+        //float acum += Time.deltaTime;
         int roll = UnityEngine.Random.Range(1, 100);
 
         if (roll <= fireProbability)
         {
             weapon.GetComponent<WeaponController>().FireWeapon();
         }
-        float t = acum / xdeltaTime;
+       
+        //float t = acum / xdeltaTime;
 
-        float sample = xCurve.Evaluate(Time.time) * Time.deltaTime;
+        //float sample = xCurve.Evaluate(Time.time) * Time.deltaTime;
         Movement();
     }
 
