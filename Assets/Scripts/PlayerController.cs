@@ -59,9 +59,10 @@ public class PlayerController : MonoBehaviour, IDestroyable
             ;
         }
         Debug.Log("Collision Here!");
+
     }
 
-    public void IncrementCollectibles()
+public void IncrementCollectibles()
     {
         collectibles++;
 

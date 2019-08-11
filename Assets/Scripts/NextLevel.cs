@@ -24,7 +24,9 @@ public class NextLevel : MonoBehaviour
         var otherObject = collider.gameObject;
         if (otherObject.tag == "Player")
         {
+            GameObject.Destroy(otherObject);
             message.SetActive(!message.activeSelf);
+        
         }
     }
     
@@ -38,6 +40,16 @@ public class NextLevel : MonoBehaviour
     public void Level2()
     {
         SceneManager.LoadScene("ShootDemo3");
+    }
+
+    public void ReturnLevel1()
+    {
+        SceneManager.LoadScene("SpaceLevel1");
+    }
+
+    public void ReturnMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 
 
