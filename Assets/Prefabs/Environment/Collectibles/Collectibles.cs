@@ -7,6 +7,7 @@ public class Collectibles : MonoBehaviour
 {
     public float time=5;
     public GameObject collectible;
+    public int padding = 10;
 
     public GameObject text;
     private Text ColText;
@@ -30,10 +31,10 @@ public class Collectibles : MonoBehaviour
         Camera camera = Camera.main;
         float halfHeight = camera.orthographicSize;
         float halfWidth = camera.aspect * halfHeight;
-        limitIzq = (int) (-halfWidth + camera.transform.position.x);
-        limitDer =  (int) (halfWidth + camera.transform.position.x);
-        limitRoof = (int) (halfHeight + camera.transform.position.y);
-        limitFloor = (int) (-halfHeight + camera.transform.position.y);
+        limitIzq = (int) (-halfWidth + camera.transform.position.x) + padding;
+        limitDer =  (int) (halfWidth + camera.transform.position.x) - padding;
+        limitRoof = (int) (halfHeight + camera.transform.position.y) - padding;
+        limitFloor = (int) (-halfHeight + camera.transform.position.y) + padding;
     }
 
     // Start is called before the first frame update

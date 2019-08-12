@@ -5,32 +5,36 @@ using UnityEngine;
 public class ObstacleGenerator : MonoBehaviour
 {
 
-    public int interval = 25;
+    public int interval = 16;
+    public int minInterval = 1, factor = 5;
     public float speed = 80f;
+    public float delay = 2f;
 
     protected int limitIzq;
     protected int limitDer;
     protected int limitRoof;
 
     public GameObject[] obstacles;
-    protected int len, count;
+    protected int len, count = 0;
 
     void Awake()
     {
-        count = interval;
+        interval *= 10;
+        minInterval = interval/4;
+        factor = interval/minInterval / 2;
         Camera camera = Camera.main;
         float halfHeight = camera.orthographicSize;
         float halfWidth = camera.aspect * halfHeight;
         limitIzq = (int) (-halfWidth + camera.transform.position.x);
         limitDer =  (int) (halfWidth + camera.transform.position.x);
-        limitRoof = (int) (halfHeight + camera.transform.position.y);
+        limitRoof = (int) (halfHeight + camera.transform.position.y) - 10;
         len = obstacles.Length;
     }
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-
+        yield return new WaitForSeconds(delay);
     }
 
     // Update is called once per frame
@@ -38,18 +42,19 @@ public class ObstacleGenerator : MonoBehaviour
     {
         int posX = Random.Range(limitIzq, limitDer);
 
-        if (len != 0 && count >= interval)
+        if (len != 0 && count % interval == 0)
         {
-            count = 0;
-            int selec = Random.Range(0, len);
-            GameObject obj = obstacles[selec];
-            obj.GetComponent<ObstacleController>().speed = speed;
+            GameObject obj = obstacles[Random.Range(0, len)];
+            //obj.GetComponent<ObstacleController>().speed = speed;
             Instantiate(
                 obj,
                 new Vector3(posX,limitRoof,0),
                 Quaternion.identity);
+
+            interval = (interval <= minInterval) ? minInterval : interval - factor;
         }
 
         count++;
     }
+
 }

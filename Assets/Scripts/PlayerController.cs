@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour, IDestroyable
         {//APAGADO, PRENDIDO, APAGADO, PRENDIDO, APAGADO, PRENDIDO
             Invulnerability();
         }
+        if (lives==0) {
+            Destroy();
+        }
     }
 
     void Invulnerability()
@@ -180,5 +183,13 @@ public class PlayerController : MonoBehaviour, IDestroyable
     public int GetCollectibles()
     {
         return collectibles;
+    }
+
+    public void LowerHealth(int i)
+    {
+        this.lives -= i;
+        this.golpeado = true;
+        this.apagado = true;
+        this.prendido = false;
     }
 }

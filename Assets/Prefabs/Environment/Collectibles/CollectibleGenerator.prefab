@@ -90,17 +90,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6721663846932602889}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1302ca7f72916ef47859f367cb74b939, type: 3}
+  m_Script: {fileID: 11500000, guid: 95c669169f86c4a4eb382fb3530db729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   time: 5
-  collectible: {fileID: 1645689691036128208, guid: bf132ef9687fd0d4597a4a941d35fb6c,
-    type: 3}
+  collectible: {fileID: 0}
   text: {fileID: 0}
   ship: {fileID: 0}
-  audioSource: {fileID: 673836765}
-  ItemAppears: {fileID: 8300000, guid: 1df0c2e3d4c3d5e4583a70e33cb92e0d, type: 3}
-  GotItem: {fileID: 8300000, guid: ae307c036dcc5024592409e84a4c8065, type: 3}
+  audioSource: {fileID: 0}
+  ItemAppears: {fileID: 0}
+  GotItem: {fileID: 0}
 --- !u!82 &673836765
 AudioSource:
   m_ObjectHideFlags: 0

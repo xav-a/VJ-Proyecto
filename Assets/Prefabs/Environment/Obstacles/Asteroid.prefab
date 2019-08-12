@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896f662fed5443547a5fe18fbaa6d9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 100
+  speed: 65
   rb2D: {fileID: 0}
   audioSource: {fileID: 3220542516323325186}
   collisionClip: {fileID: 8300000, guid: d4844689c0701da4b988125cd77d7dbb, type: 3}

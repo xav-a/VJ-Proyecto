@@ -118,8 +118,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireProbability: 1
   health: 100
-  moveSpeed: 40
-  magnitude: 100
+  count: 0
+  interval: 90
+  xCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  moveSpeed: 20
+  magnitude: 200
   target: {fileID: 9260185987517692, guid: 4877df8abee4c004d877e4a71a29da5b, type: 3}
   weapon: {fileID: 2440896151113897258}
   audioSource: {fileID: 1458923472252414728}
@@ -129,7 +137,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.0032958984
+      value: 0.001373291
       inSlope: -4.4030046
       outSlope: -4.4030046
       tangentMode: 0
@@ -137,44 +145,26 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.28244114
     - serializedVersion: 3
-      time: 0.10490652
-      value: -0.29347286
-      inSlope: -0.32786578
-      outSlope: -0.32786578
+      time: 0.17617397
+      value: -0.26948225
+      inSlope: -0.103796534
+      outSlope: -0.103796534
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.35029167
-      value: 0.28916743
-      inSlope: -0.043122638
-      outSlope: -0.043122638
+      time: 0.9828086
+      value: 0.14744827
+      inSlope: 0.33891743
+      outSlope: 0.33891743
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.35906073
-    - serializedVersion: 3
-      time: 0.6044123
-      value: -0.29581195
-      inSlope: 0.28078765
-      outSlope: 0.28078765
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.41988882
-      outWeight: 0.22349395
-    - serializedVersion: 3
-      time: 1.0621543
-      value: 0.30300018
-      inSlope: -0.0065210485
-      outSlope: -0.0065210485
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.1193226
       outWeight: 0.5239883
     - serializedVersion: 3
       time: 1.2950923
-      value: 0.010041589
+      value: 0.0081189815
       inSlope: -2.0727277
       outSlope: -2.0727277
       tangentMode: 0
@@ -306,11 +296,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1614627169486377226}
     m_Modifications:
-    - target: {fileID: 4308590885519991892, guid: 8c0a4e1f1b457f04dab36bc48d8ecce0,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyGun
-      objectReference: {fileID: 0}
     - target: {fileID: 4308590885519991891, guid: 8c0a4e1f1b457f04dab36bc48d8ecce0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -365,6 +350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308590885519991892, guid: 8c0a4e1f1b457f04dab36bc48d8ecce0,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyGun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0a4e1f1b457f04dab36bc48d8ecce0, type: 3}

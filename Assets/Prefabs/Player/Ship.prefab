@@ -104,7 +104,10 @@ MonoBehaviour:
   shield: {fileID: 3255634720524902642}
   audioSource: {fileID: 4469911039839576354}
   deathClip: {fileID: 8300000, guid: 7bb77addc1c799648b8c7bfd09aa71af, type: 3}
+  ColText: {fileID: 0}
+  time: 0.3
   shieldAppear: {fileID: 8300000, guid: 22853dc5cc944ce49b4f31dc4a48c272, type: 3}
+  shieldDisappears: {fileID: 8300000, guid: a924b8859637c134ab4fdd47d21d7357, type: 3}
 --- !u!50 &213424985065277439
 Rigidbody2D:
   serializedVersion: 4
@@ -532,6 +535,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6013206926808412220}
     m_Modifications:
+    - target: {fileID: 6036427722720098065, guid: b78e605e697f80543b0c0b1998386af7,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036427722720098065, guid: b78e605e697f80543b0c0b1998386af7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 21.087727
+      objectReference: {fileID: 0}
     - target: {fileID: 7115017672226842754, guid: b78e605e697f80543b0c0b1998386af7,
         type: 3}
       propertyPath: m_Name
@@ -596,16 +609,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036427722720098065, guid: b78e605e697f80543b0c0b1998386af7,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036427722720098065, guid: b78e605e697f80543b0c0b1998386af7,
-        type: 3}
-      propertyPath: m_Radius
-      value: 21.087727
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b78e605e697f80543b0c0b1998386af7, type: 3}

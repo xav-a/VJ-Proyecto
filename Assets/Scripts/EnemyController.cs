@@ -8,6 +8,9 @@ public class EnemyController : MonoBehaviour, IDestroyable
     public int fireProbability = 10;
     public int health = 100;
 
+    public int count = 0;
+    public int interval = 180;
+
     public AnimationCurve xCurve;
 
     [SerializeField]
@@ -22,6 +25,7 @@ public class EnemyController : MonoBehaviour, IDestroyable
     private Vector3 origin;
     private Vector3 targetPos;
 
+
     private Direction vDirection;
     private Direction hDirection;
 
@@ -32,10 +36,10 @@ public class EnemyController : MonoBehaviour, IDestroyable
         magnitude *= 10f;
         gameObject.tag = "Enemy";
         targetPos = target.transform.position;
-        movePath.postWrapMode = WrapMode.Loop;
+        //movePath.postWrapMode = WrapMode.Loop;
     }
 
-    void Start()
+    IEnumerator Start()
     {
         pos = transform.position;
         vDirection = (pos.y < targetPos.y) ?
@@ -44,19 +48,27 @@ public class EnemyController : MonoBehaviour, IDestroyable
         hDirection = (pos.x > targetPos.x) ?
             Direction.RIGHT :
             Direction.DOWN;
+
+        yield return new WaitForSeconds(1f);
+
     }
 
     void Update()
     {
         //SinusoidalMovement(vertical: true, positive: false);
         //float acum += Time.deltaTime;
-        int roll = UnityEngine.Random.Range(1, 100);
+        //int roll = UnityEngine.Random.Range(1, 100);
 
-        if (roll <= fireProbability)
+        //if (roll <= fireProbability)
+        //{
+        if (count % interval == 0)
         {
             weapon.GetComponent<WeaponController>().FireWeapon();
+            count = 0;
         }
-       
+        count++;
+        //}
+
         //float t = acum / xdeltaTime;
 
         //float sample = xCurve.Evaluate(Time.time) * Time.deltaTime;

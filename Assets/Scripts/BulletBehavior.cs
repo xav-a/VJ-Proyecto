@@ -21,10 +21,24 @@ public class BulletBehavior : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         var tag = collider.gameObject.tag;
-        if (Array.Exists(objectiveTags, objTag => objTag == tag))
+        if (tag == "Shield")
+        {
+            collider.gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+
+        else if (Array.Exists(objectiveTags, objTag => objTag == tag))
         {
             Destroy(gameObject);
-            collider.gameObject.GetComponent<IDestroyable>().Destroy();
+
+            if (tag == "Player")
+            {
+                collider.gameObject.GetComponent<PlayerController>().LowerHealth(1);
+            }
+            else
+            {
+                collider.gameObject.GetComponent<IDestroyable>().Destroy();
+            }
         }
     }
 
