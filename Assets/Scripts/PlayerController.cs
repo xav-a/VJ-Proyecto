@@ -52,6 +52,12 @@ public class PlayerController : MonoBehaviour, IDestroyable
     void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;
+        Collider2D shieldCollider = collision.contacts[0].collider;
+
+        if (collider.gameObject.tag == "Shield")
+        {
+            shield.SetActive(false);
+        }
 
         if (collider.gameObject.tag == "Enemy" ||
             collider.gameObject.tag == "Obstacle")
@@ -65,7 +71,7 @@ public class PlayerController : MonoBehaviour, IDestroyable
     {
         collectibles++;
 
-        if (collectibles == 3)
+        if ((collectibles % 3) == 0)
         {
             audioSource.PlayOneShot(shieldAppear, .60f);
             shield.SetActive(true);

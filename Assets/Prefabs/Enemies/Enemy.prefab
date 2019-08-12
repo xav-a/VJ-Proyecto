@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7691532136106724000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 198.04681, y: 174.47984, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1.15, z: 1}
   m_Children:
   - {fileID: 2440896151113897261}
   m_Father: {fileID: 0}
@@ -118,8 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireProbability: 1
   health: 100
-  moveSpeed: 100
-  magnitude: 80
+  moveSpeed: 40
+  magnitude: 100
   target: {fileID: 9260185987517692, guid: 4877df8abee4c004d877e4a71a29da5b, type: 3}
   weapon: {fileID: 2440896151113897258}
   audioSource: {fileID: 1458923472252414728}

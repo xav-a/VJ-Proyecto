@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca002389218db0045b3768aa173641bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 250
+  interval: 1000
   speed: 100
   obstacles:
   - {fileID: 7691532136106724000, guid: 3334517385e05d440b44c7a8fbc06f85, type: 3}
   seqNumber: 3
-  variance: 100
 --- !u!1001 &3520425237160582131
 PrefabInstance:
   m_ObjectHideFlags: 0
