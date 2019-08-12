@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,8 +9,21 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb2D;
     Vector2 movimiento;
 
+    //Vidas del jugador
+    private int lives = 3;
+    public Text ColText;
+
+    //Seccion de las variables importantes para la invulneravilidad
+    private SpriteRenderer sr;
+    public float time = 0.3f;
+    private bool golpeado = false;
+    private bool apagado = false;
+    private bool prendido = true;
+    private int contInvulnerability = 0;
+
     public AudioSource audioSource;
     public AudioClip deathClip;
+    //Sonidos para el escudo
     public AudioSource audioShield;
     public AudioClip shieldDisappears;
 
@@ -17,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         movimiento = new Vector2(0f, 0f);
+        sr = GetComponent<SpriteRenderer>();
     }
 
      void Update()
@@ -28,6 +43,56 @@ public class PlayerController : MonoBehaviour
     {
         transform.Translate(movimiento * velocidad);
         LimitarNave();
+        if (golpeado)
+        {//APAGADO, PRENDIDO, APAGADO, PRENDIDO, APAGADO, PRENDIDO
+            this.Invulnerability();
+        }
+    }
+
+    void Invulnerability()
+    {
+        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+        if (sr.enabled && apagado)
+        {
+            Debug.Log("Desactivado");
+            sr.enabled = false;
+
+        }
+
+        if (!sr.enabled && prendido)
+        {
+            sr.enabled = true;
+        }
+
+        time -= Time.deltaTime;
+        if (time <= 0)
+        {
+            time = 0.3f;
+            contInvulnerability += 1;
+            if (contInvulnerability == 6)
+            {
+                contInvulnerability = 0;
+                sr.enabled = true;
+                this.golpeado = false;
+                gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+                this.prendido = true;
+                this.apagado = false;
+            }
+            else
+            {
+                if (apagado)
+                {
+                    apagado = false;
+                    prendido = true;
+                }
+                else
+                {
+                    apagado = true;
+                    prendido = false;
+                }
+            }
+
+        }
     }
 
     void LimitarNave()
@@ -53,13 +118,23 @@ public class PlayerController : MonoBehaviour
     {
         foreach (Transform child in gameObject.transform)
         {
-            if (child.tag == "Shield")
+            if (child.tag == "Shield") //busco el escudo del jugador
             {
-                if (!child.gameObject.activeSelf)
+                if (!child.gameObject.activeSelf)//si el escudo no esta activo bajo vida
                 {
-                    StartCoroutine(Terminate());
+                    if (lives==0) {
+                        StartCoroutine(Terminate());
+                    }
+                    else
+                    {
+                        this.golpeado = true;
+                        this.apagado = true;
+                        this.prendido = false;
+                        lives -= 1;
+                        this.ColText.text = "Lives: " + this.lives;
+                    }
                 }
-                else
+                else//si el escudo esta activo entonces desaparece
                 {
                     audioShield.PlayOneShot(shieldDisappears, .60f);
                     child.gameObject.SetActive(false);

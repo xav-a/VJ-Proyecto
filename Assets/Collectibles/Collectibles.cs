@@ -44,7 +44,7 @@ public class Collectibles : MonoBehaviour
 
         if (copy==null)
         {
-            Debug.Log("momazo");
+            //Debug.Log("momazo");
                 time -= Time.deltaTime;
 
                 if (time <= 0)
@@ -54,7 +54,7 @@ public class Collectibles : MonoBehaviour
                 audioSource.PlayOneShot(ItemAppears, .60f);
                 copy =Instantiate(
                     coll,
-                    new Vector3(posX, posY, 0),
+                    new Vector3(406, 70, 0),
                     Quaternion.identity);
                     time = 5;
                     cantCol += 1;
@@ -79,7 +79,6 @@ public class Collectibles : MonoBehaviour
                             audioSource.PlayOneShot(ShieldAppears, .60f);
                             child.gameObject.SetActive(true);
                         }
-                        
                     }
                 }
             }
