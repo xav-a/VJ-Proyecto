@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class NextLevel : MonoBehaviour
 {
     public GameObject message;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +26,6 @@ public class NextLevel : MonoBehaviour
         {
             GameObject.Destroy(otherObject);
             message.SetActive(!message.activeSelf);
-        
         }
     }
     

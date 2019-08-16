@@ -11,8 +11,10 @@ public class PlayerController : MonoBehaviour, IDestroyable
 
     public GameObject weapon;
     public GameObject shield;
+    public GameObject gameOver;
     public AudioSource audioSource;
     public AudioClip deathClip;
+    
 
     Rigidbody2D rb2D;
     Vector2 movement;
@@ -62,6 +64,8 @@ public class PlayerController : MonoBehaviour, IDestroyable
         }
         if (lives==0) {
             Destroy();
+            
+            
         }
     }
 
@@ -128,6 +132,8 @@ public class PlayerController : MonoBehaviour, IDestroyable
             {
                 if (lives==0) {
                     Destroy();
+                    gameOver.SetActive(!gameOver.activeSelf);
+                   
                 }
                 else
                 {
