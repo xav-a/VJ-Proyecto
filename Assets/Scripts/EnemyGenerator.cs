@@ -7,23 +7,30 @@ public class EnemyGenerator : ObstacleGenerator
 
     public int seqNumber = 3;
     private int quad = 1;
+    public float time = 1f;
     // Start is called before the first frame update
-    void Start()
-    {
+    //void Start()
+    //{
 
+    //}
+
+    IEnumerator Start()
+    {
+        factor = factor / 2;
+        yield return new WaitForSeconds(delay);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (len != 0 && count >= interval)
+        if (len != 0 && count % interval == 0)
         {
             float fourth = (float) (limitDer - limitIzq) / 4f;
 
             StartCoroutine(
-                GenerateObstacles(1f, seqNumber, fourth)
+                GenerateObstacles(time, seqNumber, fourth)
             );
-            count = 0;
+            interval = (interval <= minInterval) ? minInterval : interval - factor;
         }
 
         count++;

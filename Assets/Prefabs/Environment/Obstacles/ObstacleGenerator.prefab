@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 16
+  speed: 80
+  delay: 5
   obstacles:
   - {fileID: 3235664466121286589, guid: d32d5ecdd2b232e4da10aca67ac37704, type: 3}
   - {fileID: 2217518563847241924, guid: bc0eefc2efe365f4f8b56890f53a50ce, type: 3}

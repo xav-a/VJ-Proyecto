@@ -42,7 +42,7 @@ public class ObstacleController : MonoBehaviour, IDestroyable
 
         if (HplayerGO.tag == "Player")
         {
-            HplayerGO.GetComponent<IDestroyable>().Destroy();
+            //HplayerGO.GetComponent<IDestroyable>().Destroy();
             Destroy();
         }
     }

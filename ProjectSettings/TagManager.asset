@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Panel
   - Shield
+  - Hole
   layers:
   - Default
   - TransparentFX
