@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     public Text timeText;
 
     public Text livesText;
-   
+
 
     public float time = 10f;
 
