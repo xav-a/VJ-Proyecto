@@ -11,91 +11,74 @@ public class EnemyController : MonoBehaviour, IDestroyable
     public int count = 0;
     public int interval = 180;
 
-    public AnimationCurve xCurve;
-
     [SerializeField]
-	public float moveSpeed = 100f, magnitude = 100f;
+	public float moveSpeed = 100f;
 
-    public GameObject target;
+    //public GameObject target;
     public GameObject weapon;
     public AudioSource audioSource;
     public AudioClip deathClip;
-    public AnimationCurve movePath;
+    public AnimationCurve path;
+
+    private bool canShoot = true;
     private Vector3 pos;
     private Vector3 origin;
     private Vector3 targetPos;
 
-
-    private Direction vDirection;
-    private Direction hDirection;
-
-
-
     void Awake()
     {
-        magnitude *= 10f;
+        moveSpeed *= 5;
         gameObject.tag = "Enemy";
-        targetPos = target.transform.position;
-        //movePath.postWrapMode = WrapMode.Loop;
+        path.postWrapMode = WrapMode.Loop;
+
+        Camera camera = Camera.main;
+        float halfHeight = camera.orthographicSize;
+        float halfWidth = camera.aspect * halfHeight;
+        float limitFloor = (-halfHeight + camera.transform.position.y);
+
+        targetPos = new Vector3(
+            pos.x,
+            limitFloor,
+            pos.z
+        );
     }
 
     IEnumerator Start()
     {
-        pos = transform.position;
-        vDirection = (pos.y < targetPos.y) ?
-            Direction.UP :
-            Direction.DOWN;
-        hDirection = (pos.x > targetPos.x) ?
-            Direction.RIGHT :
-            Direction.DOWN;
-
+        pos = origin = transform.position;
         yield return new WaitForSeconds(1f);
-
     }
 
     void Update()
     {
-        //SinusoidalMovement(vertical: true, positive: false);
         //float acum += Time.deltaTime;
         //int roll = UnityEngine.Random.Range(1, 100);
-
-        //if (roll <= fireProbability)
-        //{
-        if (count % interval == 0)
+        if (count % interval == 0 && canShoot)
         {
-            weapon.GetComponent<WeaponController>().FireWeapon();
+            FireWeapon();
             count = 0;
         }
         count++;
-        //}
-
-        //float t = acum / xdeltaTime;
-
-        //float sample = xCurve.Evaluate(Time.time) * Time.deltaTime;
         Movement();
     }
 
     void LateUpdate()
     {
         transform.position = pos;
-        //transform.position = pos;
         if (health <= 0) Destroy();
     }
 
     void Movement()
     {
-        float sample = movePath.Evaluate(Time.time);
-        //Debug.Log($"{sample} curve {magnitude}");
-        //pos.x += Time.deltaTime * (int) hDirection * moveSpeed;
-        pos.y += Time.deltaTime * (int) vDirection * moveSpeed;
-        pos.x += (sample * magnitude) * Time.deltaTime;
+        //pos = Vector3.Lerp(origin, targetPos, moveSpeed) * Time.deltaTime;
+        pos.y += Time.deltaTime * (int) Direction.DOWN * moveSpeed;
     }
 
     // Update is called once per frame
     public int LowerHealth(int damage)
     {
         health -= damage;
-        Debug.Log($"I'm hit! {health}");
+        // Debug.Log($"I'm hit! {health}");
         return health;
     }
 
@@ -108,6 +91,16 @@ public class EnemyController : MonoBehaviour, IDestroyable
         StartCoroutine(Terminate());
     }
 
+    public bool TriggerCanShoot() {
+        canShoot = !canShoot;
+        return canShoot;
+    }
+
+    public bool GetCanShoot()
+    {
+        return canShoot;
+    }
+
     public IEnumerator Terminate()
     {
         yield return new WaitForSeconds(deathClip.length);
@@ -116,6 +109,28 @@ public class EnemyController : MonoBehaviour, IDestroyable
 
     void OnBecameInvisible() {
         Destroy(gameObject);
+    }
+
+    public void FireWeapon()
+    {
+        weapon.GetComponent<WeaponController>().FireWeapon();
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+
+        var tag = collider.gameObject.tag;
+        if (tag == "Shield")
+        {
+            collider.gameObject.SetActive(false);
+            Destroy();
+        }
+
+        else if (tag == "Player")
+        {
+            collider.gameObject.GetComponent<PlayerController>().LowerHealth(1);
+            Destroy();
+        }
     }
 
 }

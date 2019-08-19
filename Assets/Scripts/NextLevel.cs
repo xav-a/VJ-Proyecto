@@ -36,6 +36,11 @@ public class NextLevel : MonoBehaviour
         //message.SetActive(!message.activeSelf);
     }
 
+    public void EndCredits()
+    {
+        SceneManager.LoadScene("SpaceLevel2");
+    }
+
     public void Level2()
     {
         SceneManager.LoadScene("SpaceLevel2");

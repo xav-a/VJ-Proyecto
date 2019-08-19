@@ -48,7 +48,7 @@ public class ObstacleGenerator : MonoBehaviour
             //obj.GetComponent<ObstacleController>().speed = speed;
             Instantiate(
                 obj,
-                new Vector3(posX,limitRoof,0),
+                new Vector3(posX, limitRoof, 0),
                 Quaternion.identity);
 
             interval = (interval <= minInterval) ? minInterval : interval - factor;

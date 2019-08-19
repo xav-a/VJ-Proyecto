@@ -120,12 +120,6 @@ MonoBehaviour:
   health: 100
   count: 0
   interval: 90
-  xCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   moveSpeed: 20
   magnitude: 200
   target: {fileID: 9260185987517692, guid: 4877df8abee4c004d877e4a71a29da5b, type: 3}
@@ -136,40 +130,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.001373291
-      inSlope: -4.4030046
-      outSlope: -4.4030046
+      time: 0.0026855469
+      value: 0.49917948
+      inSlope: -3.7644048
+      outSlope: -3.7644048
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.28244114
+      outWeight: 0.02889427
     - serializedVersion: 3
-      time: 0.17617397
-      value: -0.26948225
-      inSlope: -0.103796534
-      outSlope: -0.103796534
+      time: 0.9924786
+      value: 0.5059178
+      inSlope: -3.6449323
+      outSlope: -3.6449323
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9828086
-      value: 0.14744827
-      inSlope: 0.33891743
-      outSlope: 0.33891743
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.1193226
-      outWeight: 0.5239883
-    - serializedVersion: 3
-      time: 1.2950923
-      value: 0.0081189815
-      inSlope: -2.0727277
-      outSlope: -2.0727277
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.19531651
+      inWeight: 0.03559858
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -296,6 +272,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1614627169486377226}
     m_Modifications:
+    - target: {fileID: 4308590885519991892, guid: 8c0a4e1f1b457f04dab36bc48d8ecce0,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyGun
+      objectReference: {fileID: 0}
     - target: {fileID: 4308590885519991891, guid: 8c0a4e1f1b457f04dab36bc48d8ecce0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -350,11 +331,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4308590885519991892, guid: 8c0a4e1f1b457f04dab36bc48d8ecce0,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyGun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0a4e1f1b457f04dab36bc48d8ecce0, type: 3}
