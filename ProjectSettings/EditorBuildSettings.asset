@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 8e8043c46ec122c44a16ad0a252640b1
+  - enabled: 1
     path: Assets/Scenes/SpaceLevel2.unity
     guid: 9dad48e7c09015842adbfd3d373057fd
   - enabled: 1

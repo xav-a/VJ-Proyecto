@@ -38,7 +38,7 @@ public class NextLevel : MonoBehaviour
 
     public void EndCredits()
     {
-        SceneManager.LoadScene("SpaceLevel2");
+        SceneManager.LoadScene("Credits");
     }
 
     public void Level2()
