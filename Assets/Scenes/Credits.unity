@@ -190,7 +190,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Director Creativo\n\nProgramador\n\nArtista\n\nDise\xF1adora\n\n"
+  m_Text: "Director Creativo\n\nProgramador\n\nArtista Conceptual\n\nDise\xF1adora
+    de Niveles\n\n"
 --- !u!222 &12390807
 CanvasRenderer:
   m_ObjectHideFlags: 0

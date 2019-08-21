@@ -4,7 +4,8 @@ This repository makes use of Git LFS.
 
 #### Final Project
 
-[Add Description]
+Venture into Deep Space in this thrilling top-down shooter! Experience two levels
+of action-packed space adventures!
 
 
 ##### Project Members

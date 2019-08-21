@@ -10,6 +10,7 @@ public class BulletBehavior : MonoBehaviour
 
     // Start is called before the first frame update
     public float speed = 50f;
+    public string originTag;
     public Direction direction = Direction.UP;
     void Start()
     {
@@ -21,7 +22,7 @@ public class BulletBehavior : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         var tag = collider.gameObject.tag;
-        if (tag == "Shield")
+        if (tag == "Shield" && originTag != "Player")
         {
             collider.gameObject.SetActive(false);
             Destroy(gameObject);

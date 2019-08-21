@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 5
   collectible: {fileID: 0}
+  padding: 65
   text: {fileID: 0}
   ship: {fileID: 0}
   audioSource: {fileID: 0}

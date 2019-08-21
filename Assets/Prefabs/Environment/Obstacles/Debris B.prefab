@@ -7,10 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2041110961213195904, guid: 75a899db4a36fa047a977763d415ffc9,
+    - target: {fileID: 6428034810548445705, guid: 75a899db4a36fa047a977763d415ffc9,
         type: 3}
-      propertyPath: speed
-      value: 80
+      propertyPath: m_Name
+      value: Debris B
       objectReference: {fileID: 0}
     - target: {fileID: 3054418819710795775, guid: 75a899db4a36fa047a977763d415ffc9,
         type: 3}
@@ -67,17 +67,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3054418819710795775, guid: 75a899db4a36fa047a977763d415ffc9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054418819710795775, guid: 75a899db4a36fa047a977763d415ffc9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3951778132983525439, guid: 75a899db4a36fa047a977763d415ffc9,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 57d4fd0b0aa675a4b867404cf0888d22,
         type: 3}
-    - target: {fileID: 6428034810548445705, guid: 75a899db4a36fa047a977763d415ffc9,
-        type: 3}
-      propertyPath: m_Name
-      value: Debris B
-      objectReference: {fileID: 0}
     - target: {fileID: 7869432042686392031, guid: 75a899db4a36fa047a977763d415ffc9,
         type: 3}
       propertyPath: m_Points.Array.size
@@ -142,6 +147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Points.Array.data[5].y
       value: 3.7829437
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041110961213195904, guid: 75a899db4a36fa047a977763d415ffc9,
+        type: 3}
+      propertyPath: speed
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75a899db4a36fa047a977763d415ffc9, type: 3}

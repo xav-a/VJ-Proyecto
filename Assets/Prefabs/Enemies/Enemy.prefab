@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7691532136106724000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 198.04681, y: 174.47984, z: 0}
-  m_LocalScale: {x: 1, y: 1.15, z: 1}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1}
   m_Children:
   - {fileID: 2440896151113897261}
   m_Father: {fileID: 0}
@@ -121,32 +121,12 @@ MonoBehaviour:
   count: 0
   interval: 90
   moveSpeed: 20
-  magnitude: 200
-  target: {fileID: 9260185987517692, guid: 4877df8abee4c004d877e4a71a29da5b, type: 3}
   weapon: {fileID: 2440896151113897258}
   audioSource: {fileID: 1458923472252414728}
   deathClip: {fileID: 8300000, guid: af636180a06045c41802440c6ef90368, type: 3}
-  movePath:
+  path:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0026855469
-      value: 0.49917948
-      inSlope: -3.7644048
-      outSlope: -3.7644048
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.02889427
-    - serializedVersion: 3
-      time: 0.9924786
-      value: 0.5059178
-      inSlope: -3.6449323
-      outSlope: -3.6449323
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.03559858
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

@@ -27,5 +27,9 @@ public class WeaponController : MonoBehaviour
             transform.position,
             Quaternion.identity
         );
+        bullet.GetComponent<BulletBehavior>().originTag = gameObject
+                                                        .transform
+                                                        .parent
+                                                        .gameObject.tag;
     }
 }
